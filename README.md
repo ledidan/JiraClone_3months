@@ -8,10 +8,8 @@
 - Manage task page
 - Edit task modal
 - Edit user modal
-- My profile page
 - Log in page
 - Sign up page
-- Manage user page
 - Create task modal
 - Edit project page
 
