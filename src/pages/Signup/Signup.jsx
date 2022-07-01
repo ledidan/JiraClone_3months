@@ -33,7 +33,7 @@ function SignUpPage(props) {
           />
         </div>
         <div className="flex text-center flex-col w-96 py-5 px-5 shadow-lg shadow-slate-200">
-          <h3 className="text-center text-2xl">Log in to continue to:</h3>
+          <h3 className="text-center text-2xl">Sign Up to continue to:</h3>
           <p className="font-bold text-lg">Login Page</p>
           <div className="d-flex mt-3">
             <Input
