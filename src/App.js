@@ -9,6 +9,8 @@ import CreateProjectJira from "./pages/CreateProject/CreateProjectJira";
 import ProjectManagement from "./pages/ProjectManagement/ProjectManagement";
 import ModalHOC from "./HOC/ModalHOC";
 import LoginTemplate from "./Template/LoginTemplate";
+import SignUpTemplate from "./Template/SignUpTemplate";
+import Signup from "./pages/Signup/Signup";
 function App() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -21,6 +23,8 @@ function App() {
     <BrowserRouter>
       <ModalHOC />
       <Switch>
+        {/* Signup Theme */}
+        <SignUpTemplate path="/register" exact Component={Signup} />
         {/* Login Theme */}
         <LoginTemplate path="/login" exact Component={LoginUI} />
         <LoginTemplate path="/" exact Component={LoginUI} />

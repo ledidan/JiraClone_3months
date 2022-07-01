@@ -1,5 +1,6 @@
 import { all, takeEvery, takeLatest } from "redux-saga/effects";
 import * as UserLogIn from "./UserJiraSaga";
+import * as UserSignUp from "./UserJiraSaga";
 import * as ProjectCategory from "./ProjectCategorySaga";
 import * as CreateProject from "./ProjectSaga";
 import * as GetAllListProject from "./ProjectSaga";
@@ -39,5 +40,6 @@ export default function* rootSaga() {
     getTaskDetailModal.listenGetTaskDetailSaga(),
     updateTaskStatus.listenUpdateTaskStatusSaga(),
     handleChangeTaskPost.theoDoiHandelChangeTaskPostApi(),
+    UserSignUp.listenUserSignUp(),
   ]);
 }

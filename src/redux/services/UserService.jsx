@@ -4,6 +4,9 @@ export class UserService extends baseService {
   constructor() {
     super();
   }
+  signup = (userSignUp) => {
+    return this.post(`users/signup`, userSignUp);
+  };
   getUser = (keyWord) => {
     return this.get(`Users/getUser?keyword=${keyWord}`);
   };

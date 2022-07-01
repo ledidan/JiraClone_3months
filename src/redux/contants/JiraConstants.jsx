@@ -1,5 +1,5 @@
 // GET LOGIN API
-export const USER_SIGNIN_API = "SIGIN_API";
+export const USER_SIGNUP_REDUCER = "USER_SIGNUP_REDUCER";
 export const GET_TASK_API = "GET_TASK_API";
 export const GET_API_SUCCESS = "GET_API_SUCCESS";
 export const GET_API_FAILED = "GET_API_FAILED ";

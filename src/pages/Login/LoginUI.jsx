@@ -3,14 +3,9 @@ import { withFormik } from "formik";
 import { Input, Button } from "antd";
 import * as Yup from "yup";
 import { connect } from "react-redux";
-import {
-  UserOutlined,
-  LockOutlined,
-  FacebookOutlined,
-  GoogleOutlined,
-  AppleOutlined,
-} from "@ant-design/icons";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { SIGNIN_ACTION } from "../../redux/actions/JiraActions";
+import { NavLink } from "react-router-dom";
 
 function LoginUI(props) {
   const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
@@ -71,36 +66,15 @@ function LoginUI(props) {
           >
             Login
           </Button>
-          <small className="mt-3">OR</small>
-          <div className="social mt-3 flex flex-col">
-            <Button
-              style={{ width: "27%", minWidth: 300 }}
-              className="flex items-center justify-center"
-              type="default"
-              icon={<FacebookOutlined style={{ fontSize: "20px" }} />}
-              size="large"
-            >
-              Continue with Facebook
-            </Button>
-            <Button
-              style={{ width: "27%", minWidth: 300 }}
-              className="mt-3 flex items-center justify-center"
-              type="ghost"
-              icon={<GoogleOutlined style={{ fontSize: "20px" }} />}
-              size="large"
-            >
-              Continue with Google
-            </Button>
-            <Button
-              style={{ width: "27%", minWidth: 300 }}
-              className="mt-3 flex items-center justify-center"
-              type="default"
-              icon={<AppleOutlined style={{ fontSize: "20px" }} />}
-              size="large"
-            >
-              Continue with Apple
-            </Button>
-          </div>
+          <small className="my-3">OR</small>
+          {/*  login btn */}
+          <p>
+            Don't have an account yet?
+            <NavLink to="/register" className="text-blue-500">
+              {" "}
+              Register now
+            </NavLink>
+          </p>
         </div>
       </div>
     </form>
