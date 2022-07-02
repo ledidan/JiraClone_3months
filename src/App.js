@@ -12,15 +12,15 @@ import LoginTemplate from "./Template/LoginTemplate";
 import SignUpTemplate from "./Template/SignUpTemplate";
 import Signup from "./pages/Signup/Signup";
 function App() {
-  const history = useHistory();
-  const dispatch = useDispatch();
+  // const history = useHistory();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch({ type: "ADD_HISTORY", history: history });
-  }, []);
+  // useEffect(() => {
+  //   dispatch({ type: "ADD_HISTORY", history: history });
+  // }, []);
 
   return (
-    <BrowserRouter>
+    <>
       <ModalHOC />
       <Switch>
         {/* Signup Theme */}
@@ -46,7 +46,7 @@ function App() {
           Component={ProjectManagement}
         />
       </Switch>
-    </BrowserRouter>
+    </>
   );
 }
 
