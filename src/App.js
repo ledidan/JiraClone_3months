@@ -1,7 +1,6 @@
 import "./App.css";
-import React, { useEffect } from "react";
-import { BrowserRouter, Switch, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import React from "react";
+import { Switch } from "react-router-dom";
 import LoginUI from "./pages/Login/LoginUI";
 import { JiraDashboard } from "./Template/JiraDashboard";
 import IndexJira from "./pages/IndexJiraDashBoard/IndexJira";
@@ -11,16 +10,11 @@ import ModalHOC from "./HOC/ModalHOC";
 import LoginTemplate from "./Template/LoginTemplate";
 import SignUpTemplate from "./Template/SignUpTemplate";
 import Signup from "./pages/Signup/Signup";
+import TestTemplate from "./Template/TestTemplate";
 function App() {
-  // const history = useHistory();
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch({ type: "ADD_HISTORY", history: history });
-  // }, []);
-
   return (
     <>
+      <TestTemplate />
       <ModalHOC />
       <Switch>
         {/* Signup Theme */}

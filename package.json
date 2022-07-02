@@ -13,7 +13,6 @@
     "autoprefixer": "^10.4.5",
     "axios": "^0.26.1",
     "connected-react-router": "^6.9.2",
-    "flowbite": "^1.4.7",
     "formik": "^2.2.9",
     "history": "^4.10.1",
     "node-polyfill-webpack-plugin": "^1.1.4",
