@@ -8,7 +8,7 @@ import {
   takeLatest,
   select,
 } from "redux-saga/effects";
-import {history} from "../../util/history";
+import { history } from "../../util/history";
 import { Notification } from "../../util/Notification/notification";
 import { userService } from "../services/UserService";
 import { DISPLAY_LOADING, HIDE_LOADING } from "../contants/DisplayLoading";
@@ -42,17 +42,19 @@ function* signInJira(action) {
     );
 
     // save data in localstorage when signin successfully
-    localStorage.getItem(ACCESS_TOKEN, data.content.accessToken);
+    localStorage.setItem(ACCESS_TOKEN, data.content.accessToken);
     localStorage.setItem(USER_LOGIN, JSON.stringify(data.content));
     if (status === STATUS_CODE.SUCCESS) {
       yield put({
         type: USLOGIN_ACTION,
         userLogin: data.content,
       });
+      history.push("/dashboard");
     }
+
     Notification("success", "Loggged in successfully");
   } catch (err) {
-    console.log(err.response.data);
+    console.log(err.response?.data);
     Notification("error", "Login attempt failed !");
   }
   yield put({
@@ -73,20 +75,15 @@ function* signUpSaga(action) {
     const { data, status } = yield call(() =>
       userService.signup(action.userSignUp)
     );
+
     if (status === STATUS_CODE.SUCCESS) {
       Notification("success", "Signup Successfully");
-      if (history.location.pathname === "/register") {
-        history.push("/login");
-      }
+      history.push("/login");
     }
     // load lại list user
     yield put({
       type: GET_USER_API,
       keyWord: "",
-    });
-    // tắt modal
-    yield put({
-      type: CLOSE_MODAL,
     });
   } catch (err) {
     console.log(err.response?.data);
