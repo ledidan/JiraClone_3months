@@ -1,9 +1,5 @@
 import axios from "axios";
-import {
-  DOMAIN_LOGIN_JIRA,
-  TOKEN_CYBER,
-  ACCESS_TOKEN,
-} from "../../util/JiraSystem";
+import { DOMAIN_LOGIN_JIRA, TOKEN_CYBER, ACCESS_TOKEN } from "../../util/JiraSystem";
 
 export const JiraService = {
   signInJira: (userLogin) => {

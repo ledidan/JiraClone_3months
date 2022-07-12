@@ -37,9 +37,7 @@ function* signInJira(action) {
   yield delay(500);
   // Call Sign In API
   try {
-    const { data, status } = yield call(() =>
-      JiraService.signInJira(action.userLogin)
-    );
+    const { data, status } = yield call(() => JiraService.signInJira(action.userLogin));
 
     // save data in localstorage when signin successfully
     localStorage.setItem(ACCESS_TOKEN, data.content.accessToken);
@@ -49,7 +47,7 @@ function* signInJira(action) {
         type: USLOGIN_ACTION,
         userLogin: data.content,
       });
-      history.push("/dashboard");
+      history.push("/project-management");
     }
 
     Notification("success", "Loggged in successfully");
@@ -72,14 +70,12 @@ function* signUpSaga(action) {
   });
   // Gọi api
   try {
-    const { data, status } = yield call(() =>
-      userService.signup(action.userSignUp)
-    );
-
+    const { data, status } = yield call(() => userService.signup(action.userSignUp));
     if (status === STATUS_CODE.SUCCESS) {
       Notification("success", "Signup Successfully");
       history.push("/login");
     }
+    console.log(data);
     // load lại list user
     yield put({
       type: GET_USER_API,
@@ -102,9 +98,7 @@ export function* listenUserSignUp() {
 function* getUserSaga(action) {
   // Call API
   try {
-    const { data, status } = yield call(() =>
-      userService.getUser(action.keyWord)
-    );
+    const { data, status } = yield call(() => userService.getUser(action.keyWord));
     yield put({
       type: GET_SEARCH_USER,
       lstUserSearch: data.content,
@@ -170,9 +164,7 @@ function* getUserByProjectSaga(action) {
   const { idProject } = action;
 
   try {
-    const { data, status } = yield call(() =>
-      userService.getUserByProject(idProject)
-    );
+    const { data, status } = yield call(() => userService.getUserByProject(idProject));
 
     if (status === STATUS_CODE.SUCCESS) {
       yield put({

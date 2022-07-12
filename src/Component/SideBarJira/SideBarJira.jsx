@@ -22,13 +22,10 @@ export default function SideBarJira() {
     <Layout style={{ flex: "none" }}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="text-right text-white text-lg">
-          {React.createElement(
-            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-            {
-              className: "trigger p-3",
-              onClick: () => setCollapsed(!collapsed),
-            }
-          )}
+          {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+            className: "trigger p-3",
+            onClick: () => setCollapsed(!collapsed),
+          })}
         </div>
         <Menu
           theme="dark"

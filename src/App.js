@@ -11,10 +11,14 @@ import LoginTemplate from "./Template/LoginTemplate";
 import SignUpTemplate from "./Template/SignUpTemplate";
 import Signup from "./pages/Signup/Signup";
 import TestTemplate from "./Template/TestTemplate";
+import DragDropDemo from "../src/Template/DrogDragDemo";
+import DragDropTask from "./pages/DragDropTask/DragDropTask";
 function App() {
   return (
     <>
-      <TestTemplate />
+      <LoginTemplate path="/testdrag" exact Component={DragDropDemo} />
+      {/* <DragDropTask /> */}
+      {/* <TestTemplate /> */}
       <ModalHOC />
       <Switch>
         {/* Signup Theme */}
@@ -24,21 +28,9 @@ function App() {
         <LoginTemplate path="/" exact Component={LoginUI} />
         {/* JiraDashboard */}
         <JiraDashboard exact path="/dashboard" Component={IndexJira} />
-        <JiraDashboard
-          exact
-          path="/projectdetail/:projectId"
-          Component={IndexJira}
-        />
-        <JiraDashboard
-          exact
-          path="/projectsetting"
-          Component={CreateProjectJira}
-        />
-        <JiraDashboard
-          exact
-          path="/project-management"
-          Component={ProjectManagement}
-        />
+        <JiraDashboard exact path="/projectdetail/:projectId" Component={IndexJira} />
+        <JiraDashboard exact path="/projectsetting" Component={CreateProjectJira} />
+        <JiraDashboard exact path="/project-management" Component={ProjectManagement} />
       </Switch>
     </>
   );

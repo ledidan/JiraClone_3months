@@ -1,10 +1,13 @@
+import {
+  FileAddOutlined,
+  FundProjectionScreenOutlined,
+  TableOutlined,
+} from "@ant-design/icons";
 import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 export default function MenuJira() {
-  const userLogin = useSelector(
-    (state) => state.UserLoginJiraReducer.userLogin
-  );
+  const userLogin = useSelector((state) => state.UserLoginJiraReducer.userLogin);
   return (
     <div className="menu">
       <div className="account">
@@ -18,56 +21,34 @@ export default function MenuJira() {
       </div>
       <div className="control">
         <div>
-          <i className="fa fa-credit-card" />
+          <FundProjectionScreenOutlined style={{ fontSize: "25px" }} />
           <NavLink
             to="/dashboard"
             activeClassName="active font-weight-bold"
-            className="ml-1 text-dark"
+            className="ml-1 text-dark text-base"
           >
             DashBoard
           </NavLink>
         </div>
         <div>
-          <i className="fa fa-cog" />
+          <FileAddOutlined style={{ fontSize: "25px" }} />
           <NavLink
             to="/projectsetting"
             activeClassName="active font-weight-bold"
-            className="ml-1 text-dark"
+            className="ml-1 text-dark text-base"
           >
-            Project Settings
+            Add Project
           </NavLink>
         </div>
         <div>
-          <i className="fa fa-users"></i>
+          <TableOutlined style={{ fontSize: "25px" }} />
           <NavLink
             to="/project-management"
             activeClassName="active font-weight-bold"
-            className="ml-1 text-dark"
+            className="ml-1 text-dark text-base"
           >
             Project Management
           </NavLink>
-        </div>
-      </div>
-      <div className="feature">
-        <div>
-          <i className="fa fa-truck" />
-          <span className="ml-1">Releases</span>
-        </div>
-        <div>
-          <i className="fa fa-equals" />
-          <span className="ml-1">Issues and filters</span>
-        </div>
-        <div>
-          <i className="fa fa-paste" />
-          <span className="ml-1">Pages</span>
-        </div>
-        <div>
-          <i className="fa fa-location-arrow" />
-          <span className="ml-1">Reports</span>
-        </div>
-        <div>
-          <i className="fa fa-box" />
-          <span className="ml-1">Components</span>
         </div>
       </div>
     </div>
