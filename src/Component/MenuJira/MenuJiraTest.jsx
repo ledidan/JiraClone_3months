@@ -1,6 +1,7 @@
 import React from "react";
-import { Avatar, Layout, Menu } from "antd";
+import { Avatar, Dropdown, Layout, Menu, Space } from "antd";
 import {
+  DownOutlined,
   FileAddOutlined,
   FundProjectionScreenOutlined,
   TableOutlined,
@@ -10,6 +11,23 @@ import { useSelector } from "react-redux";
 const { Header } = Layout;
 export default function MenuJiraTest() {
   const userLogin = useSelector((state) => state.UserLoginJiraReducer.userLogin);
+  const menu = (
+    <Menu
+      items={[
+        {
+          label: <NavLink to="/login">Sign Out</NavLink>,
+          key: "0",
+        },
+        {
+          type: "divider",
+        },
+        {
+          label: <NavLink to="/register">Sign Up</NavLink>,
+          key: "1",
+        },
+      ]}
+    />
+  );
   return (
     <Layout style={{ background: "none" }}>
       <Header
@@ -59,13 +77,17 @@ export default function MenuJiraTest() {
             </NavLink>
           </Menu.Item>
           <Menu.Item>
-            <Avatar
-              src={userLogin.avatar}
-              status="online"
-              data-dropdown-toggle="userDropdown"
-              data-dropdown-placement="bottom-start"
-            />
-            <small className="ml-2">{userLogin.name}</small>
+            <Dropdown overlay={menu} arrow>
+              <Space>
+                <Avatar
+                  src={userLogin.avatar}
+                  data-dropdown-toggle="userDropdown"
+                  data-dropdown-placement="bottom-start"
+                />
+                <small className="ml-2">{userLogin.name}</small>
+                <DownOutlined className="d-flex align-items-center" />
+              </Space>
+            </Dropdown>
           </Menu.Item>
         </Menu>
       </Header>
