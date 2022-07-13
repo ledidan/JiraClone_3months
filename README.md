@@ -14,7 +14,7 @@
 - Edit project page
 
 ## Installed Packages
-- UI: antd, tailwindcss
+- UI: antd, tailwindcss, bootstrap
 - Routing: react-router-dom
 - Store: redux, react-redux, redux-thunk
 - Form: formik, yup
