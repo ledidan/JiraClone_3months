@@ -1,24 +1,27 @@
 import React from "react";
-import { Avatar, Breadcrumb, Layout, Menu } from "antd";
+import { Avatar, Layout, Menu } from "antd";
 import {
   FileAddOutlined,
   FundProjectionScreenOutlined,
   TableOutlined,
 } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
-const { Header, Content, Footer } = Layout;
+import { useSelector } from "react-redux";
+const { Header } = Layout;
 export default function MenuJiraTest() {
+  const userLogin = useSelector((state) => state.UserLoginJiraReducer.userLogin);
   return (
-    <Layout>
+    <Layout style={{ background: "none" }}>
       <Header
         style={{
           position: "relative",
-          zIndex: 10,
           width: "100%",
+          zIndex: 10,
+          float: "left",
+          background: "none",
         }}
       >
-        <div className="logo" />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["0"]}>
+        <Menu theme="light" mode="horizontal" defaultSelectedKeys={["0"]}>
           <Menu.Item
             key="dashboard"
             icon={<FundProjectionScreenOutlined style={{ fontSize: "25px" }} />}
@@ -50,10 +53,19 @@ export default function MenuJiraTest() {
             <NavLink
               to="/project-management"
               activeClassName="active font-weight-bold"
-              className="ml-1  text-base"
+              className="ml-1 text-base"
             >
               Project Management
             </NavLink>
+          </Menu.Item>
+          <Menu.Item>
+            <Avatar
+              src={userLogin.avatar}
+              status="online"
+              data-dropdown-toggle="userDropdown"
+              data-dropdown-placement="bottom-start"
+            />
+            <small className="ml-2">{userLogin.name}</small>
           </Menu.Item>
         </Menu>
       </Header>

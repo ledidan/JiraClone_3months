@@ -44,7 +44,7 @@ export default function ContentMain(props) {
                     {...provided.droppableProps}
                     key={index}
                     className="card pb-2"
-                    style={{ width: "17rem", height: "auto" }}
+                    style={{ width: "20rem", height: "auto" }}
                   >
                     <div className="card-header font-weight-bold">
                       {taskListDetail.statusName}

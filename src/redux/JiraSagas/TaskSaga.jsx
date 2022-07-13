@@ -22,15 +22,16 @@ function* createTaskSaga(action) {
     });
     const { data, status } = yield call(() => taskService.createTask(action.taskObject));
     if (status === STATUS_CODE.SUCCESS) {
-      history.push("/project-management");
+      Notification("success", "Create Task Successfully");
     }
 
     yield put({
       type: CLOSE_MODAL,
     });
-    Notification("success", "Create Task Successfully");
   } catch (err) {
     console.log(err.response?.data);
+    Notification("error", "Failed to Create Task");
+    history.push("/project-management");
   }
 
   yield put({
@@ -81,7 +82,6 @@ function* updateTaskStatusSaga(action) {
         taskId: taskStatusUpdate.taskId,
       });
     }
-    // history.push("/project-management");
   } catch (err) {
     console.log(err.response?.data);
   }

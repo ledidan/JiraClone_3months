@@ -1,13 +1,4 @@
-import {
-  call,
-  delay,
-  fork,
-  take,
-  put,
-  takeEvery,
-  takeLatest,
-  select,
-} from "redux-saga/effects";
+import { call, delay, put, takeLatest } from "redux-saga/effects";
 import { history } from "../../util/history";
 import { Notification } from "../../util/Notification/notification";
 import { userService } from "../services/UserService";
@@ -16,7 +7,6 @@ import { JiraService } from "../services/JiraServices";
 import { ACCESS_TOKEN, STATUS_CODE, USER_LOGIN } from "../../util/JiraSystem";
 import {
   ADD_USER_PROJECT,
-  CLOSE_MODAL,
   GET_ALL_LIST,
   GET_SEARCH_USER,
   GET_USER_API,

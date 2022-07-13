@@ -93,7 +93,7 @@
 }
 
 .main {
-  padding-left: 2%;
+  padding-left: 5%;
 }
 .main .header .breadcrumb {
   margin-bottom: 0;
@@ -152,7 +152,7 @@
 }
 
 .main .content .card {
-  margin-right: 10px;
+  margin-right: 20px;
   background-color: #f4f5f7;
 }
 

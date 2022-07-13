@@ -168,7 +168,8 @@ function* getProjectDetailSaga(action) {
       projectDetail: data.content,
     });
   } catch (err) {
-    // history.push("/project-management");
+    history.push("/project-management");
+    Notification("warning", "Please choose your project");
     console.log(err.response?.data);
   }
   yield put({

@@ -13,10 +13,10 @@ export const JiraDashboard = (props) => {
       render={(propsRoute) => {
         return (
           <>
-            {/* <MenuJiraTest /> */}
+            <MenuJiraTest />
             <div className="jira">
-              <SideBarJira />
-              <MenuJira />
+              {/* <SideBarJira /> */}
+              {/* <MenuJira /> */}
               <Component {...propsRoute} />
               <ModalJIra />
             </div>

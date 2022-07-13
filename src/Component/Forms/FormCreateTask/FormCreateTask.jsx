@@ -32,9 +32,7 @@ function FormCreateTask(props) {
   const children = [];
 
   for (let i = 10; i < 36; i++) {
-    children.push(
-      <Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>
-    );
+    children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);
   }
 
   const { handleChange, handleSubmit, setFieldValue, values } = props;
@@ -93,19 +91,11 @@ function FormCreateTask(props) {
       </div>
       <div className="form-group">
         <h6>Task name</h6>
-        <input
-          className="form-control"
-          name="taskName"
-          onChange={handleChange}
-        />
+        <input className="form-control" name="taskName" onChange={handleChange} />
       </div>
       <div className="form-group">
         <h6>Status</h6>
-        <select
-          name="statusId"
-          className="form-control"
-          onChange={handleChange}
-        >
+        <select name="statusId" className="form-control" onChange={handleChange}>
           {arrStatus.map((status, index) => {
             return (
               <option value={status.statusId} key={index}>
@@ -119,11 +109,7 @@ function FormCreateTask(props) {
         <div className="row">
           <div className="col-6">
             <h6>Priority</h6>
-            <select
-              name="priorityId"
-              className="form-control"
-              onChange={handleChange}
-            >
+            <select name="priorityId" className="form-control" onChange={handleChange}>
               {arrPriority.map((Priority, index) => {
                 return (
                   <option value={Priority.priorityId} key={index}>
@@ -135,11 +121,7 @@ function FormCreateTask(props) {
           </div>
           <div className="col-6">
             <h6>Task type</h6>
-            <select
-              name="typeId"
-              className="form-control"
-              onChange={handleChange}
-            >
+            <select name="typeId" className="form-control" onChange={handleChange}>
               {arrTaskType.map((TaskType, index) => {
                 return (
                   <option value={TaskType.id} key={index}>
@@ -301,7 +283,6 @@ const FormCreateTaskFormik = withFormik({
   }),
   handleSubmit: (values, { props, setSubmiting }) => {
     props.dispatch({ type: CREATE_TASK_SAGA, taskObject: values });
-    console.log("taskObject", values);
   },
 
   displayName: "FormCreateTaskFormik",
