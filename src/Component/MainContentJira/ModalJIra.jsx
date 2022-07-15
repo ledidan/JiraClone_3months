@@ -46,9 +46,7 @@ export default function ModalJIra() {
   };
 
   const dataUserTask = projectDetail.members?.filter((item) => {
-    let index = taskDetailModal.assigness?.findIndex(
-      (item1) => item1.id === item.userId
-    );
+    let index = taskDetailModal.assigness?.findIndex((item1) => item1.id === item.userId);
     if (index !== -1) {
       return false;
     }
@@ -105,27 +103,6 @@ export default function ModalJIra() {
                 setContentDescription(content);
               }}
             />
-            {/* <Button
-              className="btn btn-success mr-2 mt-2"
-              type="primary"
-              onClick={() => {
-                dispatch({
-                  type: HANDLE_CHANGE_TASK_POST_API_SAGA,
-                  actionType: CHANGE_TASK_MODAL,
-                  name: "description",
-                  value: contentDescription,
-                });
-                setVisibleEditor(!visibleEditor);
-              }}
-            >
-              SAVE
-            </Button>
-            <Button
-              className="btn btn-danger mt-2"
-              onClick={() => setVisibleEditor(!visibleEditor)}
-            >
-              CANCEL
-            </Button> */}
           </div>
         ) : (
           <div
@@ -230,25 +207,21 @@ export default function ModalJIra() {
                 })}
               </select>
 
-              <span>{taskDetailModal.taskName}</span>
+              <span className="font-weight-bold text-2xl">
+                {taskDetailModal.taskName}
+              </span>
             </div>
 
             <div style={{ display: "flex" }} className="task-click ">
               <div>
                 <i className="fab fa-telegram-plane text-lg mr-1" />
-                <span
-                  className="font-weight-normal"
-                  style={{ paddingRight: 20 }}
-                >
+                <span className="font-weight-normal" style={{ paddingRight: 20 }}>
                   Give feedback
                 </span>
               </div>
               <div>
                 <i className="fa fa-link text-lg ml-2 mr-1" />
-                <span
-                  className="font-weight-normal"
-                  style={{ paddingRight: 20 }}
-                >
+                <span className="font-weight-normal" style={{ paddingRight: 20 }}>
                   Copy link
                 </span>
               </div>
@@ -271,18 +244,12 @@ export default function ModalJIra() {
               <div className="row">
                 <div className="col-8">
                   <p className="issue">This is an issue of type: Task.</p>
-                  <div className="description">
-                    <h5 className="uppercase font-bold ">DESCRIPTION</h5>
-                    {renderDescription()}
-                  </div>
+                  <div className="description">{renderDescription()}</div>
                   <div className="comment mt-4">
                     <h5 className="text-lg">Comment</h5>
                     <div className="block-comment" style={{ display: "flex" }}>
                       <div className="avatar">
-                        <img
-                          src={require("../../assets/img/download1.jfif")}
-                          alt="..."
-                        />
+                        <img src={require("../../assets/img/download1.jfif")} alt="..." />
                       </div>
                       <div className="input-comment">
                         <input type="text" placeholder="Add a comment ..." />
@@ -317,10 +284,7 @@ export default function ModalJIra() {
                     </div>
                     <div className="lastest-comment">
                       <div className="comment-item">
-                        <div
-                          className="display-comment"
-                          style={{ display: "flex" }}
-                        >
+                        <div className="display-comment" style={{ display: "flex" }}>
                           <div className="avatar">
                             <img
                               src={require("../../assets/img/download2.jfif")}
@@ -332,10 +296,9 @@ export default function ModalJIra() {
                               Lord Gaben <span>a month ago</span>
                             </p>
                             <p style={{ marginBottom: 5 }}>
-                              Lorem ipsum dolor sit amet, consectetur
-                              adipisicing elit. Repellendus tempora ex
-                              voluptatum saepe ab officiis alias totam ad
-                              accusamus molestiae?
+                              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                              Repellendus tempora ex voluptatum saepe ab officiis alias
+                              totam ad accusamus molestiae?
                             </p>
                             <div>
                               <span style={{ color: "#929398" }}>Edit</span>•
@@ -381,11 +344,7 @@ export default function ModalJIra() {
                     <div style={{ display: "flex" }}>
                       {taskDetailModal.assigness?.map((user, index) => {
                         return (
-                          <div
-                            key={index}
-                            style={{ display: "flex" }}
-                            className="item"
-                          >
+                          <div key={index} style={{ display: "flex" }} className="item">
                             <div className="avatar">
                               <img src={user.avatar} alt={user.avatar} />
                             </div>
@@ -446,12 +405,13 @@ export default function ModalJIra() {
                     {renderTimeTracking()}
                   </div>
                   <div style={{ color: "#929398" }}>Create at a month ago</div>
-                  <div style={{ color: "#929398" }}>
-                    Update at a few seconds ago
-                  </div>
+                  <div style={{ color: "#929398" }}>Update at a few seconds ago</div>
                   <Button
                     className="btn btn-danger mr-2 mt-2"
                     onClick={() => setVisibleEditor(!visibleEditor)}
+                    type="button"
+                    data-dismiss="modal"
+                    aria-label="Close"
                   >
                     CANCEL
                   </Button>

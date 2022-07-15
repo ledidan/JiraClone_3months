@@ -1,4 +1,5 @@
 import { USER_SIGNIN_API, USER_SIGNUP_API } from "../contants/UserConstants";
+
 export const SIGNIN_ACTION = (email, password) => {
   return {
     type: USER_SIGNIN_API,
@@ -9,14 +10,14 @@ export const SIGNIN_ACTION = (email, password) => {
   };
 };
 
-export const SIGN_UP_ACTION = (email, password, name, phone) => {
+export const SIGN_UP_ACTION = (email, passWord, name, phoneNumber) => {
   return {
     type: USER_SIGNUP_API,
     userSignUp: {
       email: email,
-      password: password,
+      passWord: passWord,
       name: name,
-      phone: phone,
+      phoneNumber: phoneNumber,
     },
   };
 };

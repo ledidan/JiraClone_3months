@@ -1,11 +1,6 @@
 import React from "react";
 import { Button, Input } from "antd";
-import {
-  UserOutlined,
-  LockOutlined,
-  PhoneOutlined,
-  MailOutlined,
-} from "@ant-design/icons";
+import { UserOutlined, LockOutlined, PhoneOutlined, MailOutlined } from "@ant-design/icons";
 import { withFormik, Form } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
@@ -13,8 +8,7 @@ import { SIGN_UP_ACTION } from "../../redux/actions/JiraActions";
 import { NavLink } from "react-router-dom";
 import Background from "../../assets/img/jiraBackground.jpg";
 function SignUpPage(props) {
-  const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
-    props;
+  const { values, touched, errors, handleChange, handleBlur, handleSubmit } = props;
 
   const backgroundJira = {
     backgroundImage: `url(${Background})`,
@@ -25,11 +19,7 @@ function SignUpPage(props) {
   };
   return (
     <div className="w-auto" style={backgroundJira}>
-      <form
-        onSubmit={handleSubmit}
-        className="container"
-        style={{ height: window.innerHeight }}
-      >
+      <form onSubmit={handleSubmit} className="container" style={{ height: window.innerHeight }}>
         <div
           className="d-flex flex-column justify-content-center align-items-center"
           style={{ height: window.innerHeight }}
@@ -42,11 +32,12 @@ function SignUpPage(props) {
                 alt="..."
               />
             </div>
-            <h3 className="text-center text-2xl">Sign Up to continue to:</h3>
+            <h3 className="text-center text-2xl">Sign up to continue to:</h3>
             <p className="font-bold text-lg">Login Page</p>
             <div className="d-flex mt-3">
               <Input
                 onChange={handleChange}
+                onBlur={handleBlur}
                 name="name"
                 style={{ minWidth: 300 }}
                 placeholder="Name"
@@ -58,6 +49,7 @@ function SignUpPage(props) {
               <Input
                 type="number"
                 onChange={handleChange}
+                onBlur={handleBlur}
                 name="phoneNumber"
                 style={{ minWidth: 300 }}
                 placeholder="Phone number"
@@ -69,6 +61,7 @@ function SignUpPage(props) {
               <Input
                 onChange={handleChange}
                 name="email"
+                onBlur={handleBlur}
                 style={{ minWidth: 300 }}
                 placeholder="Email"
                 prefix={<MailOutlined />}
@@ -78,6 +71,7 @@ function SignUpPage(props) {
             <div className="d-flex mt-3">
               <Input
                 onChange={handleChange}
+                onBlur={handleBlur}
                 style={{ minWidth: 300 }}
                 type="password"
                 name="passWord"
@@ -119,9 +113,7 @@ const SignUpWithFormik = withFormik({
       .min(3, "Name must have min 3 characters")
       .max(30, "Name have max 30 characters"),
     phoneNumber: Yup.number().required("Phone number is required"),
-    email: Yup.string()
-      .required("Email is required")
-      .email("Email is invalid!"),
+    email: Yup.string().required("Email is required").email("Email is invalid!"),
     passWord: Yup.string()
       .min(6, "Password must have min 6 characters")
       .max(32, "Password have max 32 characters"),

@@ -21,6 +21,7 @@ import * as updateTaskStatus from "./TaskSaga";
 import * as handleChangeTaskPost from "./TaskSaga";
 export default function* rootSaga() {
   yield all([
+    UserSignUp.listenUserSignUp(),
     UserLogIn.listenUserSignIn(),
     ProjectCategory.listenAllProjectCategory(),
     CreateProject.listenCreateProjectSaga(),
@@ -40,6 +41,5 @@ export default function* rootSaga() {
     getTaskDetailModal.listenGetTaskDetailSaga(),
     updateTaskStatus.listenUpdateTaskStatusSaga(),
     handleChangeTaskPost.theoDoiHandelChangeTaskPostApi(),
-    UserSignUp.listenUserSignUp(),
   ]);
 }

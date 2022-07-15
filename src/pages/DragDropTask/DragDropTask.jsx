@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./DragTag.css";
+import { useSpring, animated } from "react-spring";
 const defaultValue = [
   { id: 0, taskName: "Task 1" },
   { id: 1, taskName: "Task 2" },
@@ -11,27 +12,24 @@ const defaultValue = [
 export default function DemoDrapDrop(props) {
   const [taskList, setTaskList] = useState(defaultValue);
   const start = useRef({});
+  const tagDragEnter = useRef({});
+  // Animated
+  const [propsSpring, set, stop] = useSpring(() => ({
+    from: { bottom: -25 },
+    to: { bottom: 0 },
+    config: { duration: 250 },
+    reset: true,
+  }));
   const handleDragStart = (e, task, index) => {
     console.log("indexStart", task);
     start.current = task;
   };
-  // const handleDragOver = (e) =>{
-  //     // console.log('target', e.target)
-  // }
-  // const handleDragEnd = (e) =>{
-  //     e.stopPropagation();
-  //     e.preventDefault();
-  //     console.log("dragend", e.target)
-  // }
-  // const hangdleDrop =(e)=>{
-  //     console.log("drop" , e.target)
-  // }
-  const hangdDragEnter = (e, task, index) => {
-    console.log("indexEnd", task);
+
+  const hangdleDragEnter = (e, task, index) => {
+    // Luu lai gia tri cua task duoc keo ngang qua
+    tagDragEnter.current = { ...task };
     const taskListUpDate = [...taskList];
-    let indexStart = taskListUpDate.findIndex(
-      (item) => item.id === start.current.id
-    );
+    let indexStart = taskListUpDate.findIndex((item) => item.id === start.current.id);
     let indexEnd = taskListUpDate.findIndex((item) => item.id === task.id);
     let tem = taskListUpDate[indexStart];
     console.log("tem", tem);
@@ -42,19 +40,50 @@ export default function DemoDrapDrop(props) {
     setTaskList(taskListUpDate);
   };
 
-  const hangdleDragEnd = (e) => {
-    start.current = "";
-    setTaskList([...taskList]);
-  };
+  const hangdleDragEnd = (e) => {};
 
   return (
-    <div className="container">
+    <div
+      className="container"
+      onDragOver={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
+      }}
+      onDrop={(e) => {
+        start.current = "";
+        setTaskList([...taskList]);
+      }}
+    >
       <div className="text-center display-4">Task list</div>
       <div className="row">
         <div className="col-2"></div>
         <div className="bg-dark p-5 col-4">
           {taskList.map((item, index) => {
             let cssDragTag = item.id === start.current.id ? "dragTag" : "";
+            if (item.id === tagDragEnter.current.id) {
+              return (
+                <animated.div
+                  style={{
+                    position: "relative",
+                    bottom: propsSpring.bottom.interpolate((numBottom) => `${numBottom}px`),
+                  }}
+                  draggable="true"
+                  onDragStart={(e) => {
+                    handleDragStart(e, item, index);
+                  }}
+                  onDragEnter={(e) => {
+                    hangdleDragEnter(e, item, index);
+                  }}
+                  onDragEnd={(e) => {
+                    hangdleDragEnd(e);
+                  }}
+                  key={index}
+                  className={`bg-success text-white m-3 p-3`}
+                >
+                  {item.taskName}
+                </animated.div>
+              );
+            }
             return (
               <div
                 draggable="true"
@@ -62,7 +91,7 @@ export default function DemoDrapDrop(props) {
                   handleDragStart(e, item, index);
                 }}
                 onDragEnter={(e) => {
-                  hangdDragEnter(e, item, index);
+                  hangdleDragEnter(e, item, index);
                 }}
                 onDragEnd={(e) => {
                   hangdleDragEnd(e);
@@ -74,9 +103,6 @@ export default function DemoDrapDrop(props) {
               </div>
             );
           })}
-        </div>
-        <div className="col-2">
-          <div className="bg-dark p-5 text-white">Anh Tien</div>
         </div>
       </div>
     </div>

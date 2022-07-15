@@ -20,21 +20,18 @@ function* createTaskSaga(action) {
     yield put({
       type: DISPLAY_LOADING,
     });
-    const { data, status } = yield call(() =>
-      taskService.createTask(action.taskObject)
-    );
+    const { data, status } = yield call(() => taskService.createTask(action.taskObject));
     if (status === STATUS_CODE.SUCCESS) {
-      history.push("/project-management");
+      Notification("success", "Create Task Successfully");
     }
 
     yield put({
       type: CLOSE_MODAL,
     });
-
-    Notification("success", "Create Task Successfully");
   } catch (err) {
-    console.info(err.config);
     console.log(err.response?.data);
+    Notification("error", "Failed to Create Task");
+    history.push("/project-management");
   }
 
   yield put({
@@ -52,15 +49,12 @@ function* getTaskDetailSaga(action) {
     yield put({
       type: DISPLAY_LOADING,
     });
-    const { data, status } = yield call(() =>
-      taskService.getTaskDetail(idTask)
-    );
+    const { data, status } = yield call(() => taskService.getTaskDetail(idTask));
     yield put({
       type: GET_TASK_DETAL_REDUCER,
       taskDetailModal: data.content,
     });
   } catch (err) {
-    console.info(err.config);
     console.log(err.response?.data);
   }
 }
@@ -87,10 +81,8 @@ function* updateTaskStatusSaga(action) {
         type: GET_TASK_DETAL_SAGA,
         taskId: taskStatusUpdate.taskId,
       });
-      Notification("success", "Update Status Project Successfully");
     }
   } catch (err) {
-    console.info(err.config);
     console.log(err.response?.data);
   }
 }
@@ -137,9 +129,7 @@ function* handelChangeTaskPostApi(action) {
 
   const taskUpdateDetail = { ...taskDetailModal, listUserAsign };
   try {
-    const { data, status } = yield call(() =>
-      taskService.upDateTask(taskUpdateDetail)
-    );
+    const { data, status } = yield call(() => taskService.upDateTask(taskUpdateDetail));
     if (status === STATUS_CODE.SUCCESS) {
       yield put({
         type: GET_PROJECT_DETAIL,

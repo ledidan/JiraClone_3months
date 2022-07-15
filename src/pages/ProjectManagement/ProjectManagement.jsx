@@ -20,9 +20,7 @@ import { useRef } from "react";
 export default function ProjectManagement(props) {
   // Lay du lieu tu reducer ve Component
 
-  const projectList = useSelector(
-    (state) => state.ProjectManagementReducer.projectList
-  );
+  const projectList = useSelector((state) => state.ProjectManagementReducer.projectList);
   const { userSearch } = useSelector((state) => state.UserLoginJiraReducer);
   //  Use dispatch to call action
   const dispatch = useDispatch();
@@ -60,18 +58,22 @@ export default function ProjectManagement(props) {
 
   const columns = [
     {
-      title: "id",
+      title: "ID",
       dataIndex: "id",
       key: "id",
       sorter: (item2, item1) => item2.id - item1.id,
       sortDirections: ["descend"],
     },
     {
-      title: "projectName",
+      title: "ProjectName",
       dataIndex: "projectName",
       key: "projectName",
       render: (text, record, index) => {
-        return <NavLink to={`/projectdetail/${record.id}`}>{text}</NavLink>;
+        return (
+          <NavLink style={{ fontWeight: "bold" }} to={`/projectdetail/${record.id}`}>
+            {text}
+          </NavLink>
+        );
       },
       sorter: (item2, item1) => {
         let projectName1 = item1.projectName?.trim().toLowerCase();
@@ -85,7 +87,7 @@ export default function ProjectManagement(props) {
     },
 
     {
-      title: "category",
+      title: "Category",
       dataIndex: "categoryName",
       key: "categoryName",
       sorter: (item2, item1) => {
@@ -102,7 +104,11 @@ export default function ProjectManagement(props) {
       title: "creator",
       key: "creator",
       render: (text, record, index) => {
-        return <Tag color="green">{record.creator?.name}</Tag>;
+        return (
+          <Tag color="red" style={{ fontSize: "15px" }}>
+            {record.creator?.name}
+          </Tag>
+        );
       },
       sorter: (item2, item1) => {
         let name1 = item1.creator.name?.trim().toLowerCase();
@@ -115,7 +121,7 @@ export default function ProjectManagement(props) {
       sortDirections: ["descend", "ascend"],
     },
     {
-      title: "members",
+      title: "Members",
       key: "members",
       render: (text, record, index) => {
         const title = <p>Add member</p>;
@@ -271,7 +277,7 @@ export default function ProjectManagement(props) {
             okText="Yes"
             cancelText="No"
           >
-            <button className="btn btn-outline-danger ">
+            <button className="btn btn-danger ">
               <DeleteOutlined style={{ fontSize: 18 }} />
             </button>
           </Popconfirm>
@@ -280,8 +286,7 @@ export default function ProjectManagement(props) {
     },
   ];
   return (
-    <div className="container mt-5">
-      <h3 className="text-4xl">Project Management</h3>
+    <div className="container m-5">
       <Space
         style={{
           marginBottom: 16,

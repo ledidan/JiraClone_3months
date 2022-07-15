@@ -168,9 +168,9 @@ function* getProjectDetailSaga(action) {
       projectDetail: data.content,
     });
   } catch (err) {
-    console.info(err.config);
-    Notification("error", "Failed to Load Project !");
     history.push("/project-management");
+    Notification("warning", "Please choose your project");
+    console.log(err.response?.data);
   }
   yield put({
     type: HIDE_LOADING,

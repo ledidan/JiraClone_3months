@@ -39,22 +39,14 @@ function CreateProjectJira(props) {
   };
   return (
     <div className="container m-5">
-      <h3 className="text-center text-4xl">Create Project</h3>
-      <form
-        className="container"
-        onSubmit={handleSubmit}
-        onChange={handleChange}
-      >
+      <h3 className="text-4xl">CREATE PROJECT </h3>
+      <form className="container" onSubmit={handleSubmit} onChange={handleChange}>
         <div className="form-group">
-          <p>Name</p>
-          <input
-            name="projectName"
-            className="form-control"
-            onChange={handleChange}
-          />
+          <p className="text-base">Name</p>
+          <input name="projectName" className="form-control" onChange={handleChange} />
         </div>
         <div className="form-group">
-          <p>Description</p>
+          <p className="text-base">Description</p>
           <Editor
             name="description"
             apiKey="nrpi36979r4qkvdj6xscissomderf9ezwj3nv36mc16v0mit"
@@ -95,11 +87,7 @@ function CreateProjectJira(props) {
           />
         </div>
         <div className="form-group">
-          <select
-            name="categoryId"
-            className="form-control"
-            onChange={handleChange}
-          >
+          <select name="categoryId" className="form-control" onChange={handleChange}>
             {arrProjectCategory?.map((item, index) => {
               return (
                 <option value={item.id} key={index}>

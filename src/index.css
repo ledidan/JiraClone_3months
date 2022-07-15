@@ -50,8 +50,6 @@
   text-align: left;
   margin-bottom: 8%;
   border-bottom: 2px solid #c4c5c6;
-  margin-left: 7%;
-  margin-right: 7%;
 }
 
 .menu .control div {
@@ -95,7 +93,7 @@
 }
 
 .main {
-  padding-left: 2%;
+  padding-left: 5%;
 }
 .main .header .breadcrumb {
   margin-bottom: 0;
@@ -154,7 +152,7 @@
 }
 
 .main .content .card {
-  margin-right: 10px;
+  margin-right: 20px;
   background-color: #f4f5f7;
 }
 
