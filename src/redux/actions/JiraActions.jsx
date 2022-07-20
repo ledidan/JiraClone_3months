@@ -10,14 +10,15 @@ export const SIGNIN_ACTION = (email, password) => {
   };
 };
 
-export const SIGN_UP_ACTION = (email, passWord, name, phoneNumber) => {
+export const SIGN_UP_ACTION = (payload) => {
+  const { email, passWord, name, phoneNumber } = payload;
   return {
     type: USER_SIGNUP_API,
     userSignUp: {
-      email: email,
-      passWord: passWord,
-      name: name,
-      phoneNumber: phoneNumber,
+      email,
+      passWord,
+      name,
+      phoneNumber,
     },
   };
 };

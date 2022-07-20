@@ -1,7 +1,12 @@
 import React from "react";
 import { Button, Input } from "antd";
-import { UserOutlined, LockOutlined, PhoneOutlined, MailOutlined } from "@ant-design/icons";
-import { withFormik, Form } from "formik";
+import {
+  UserOutlined,
+  LockOutlined,
+  PhoneOutlined,
+  MailOutlined,
+} from "@ant-design/icons";
+import { withFormik } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
 import { SIGN_UP_ACTION } from "../../redux/actions/JiraActions";
@@ -19,7 +24,11 @@ function SignUpPage(props) {
   };
   return (
     <div className="w-auto" style={backgroundJira}>
-      <form onSubmit={handleSubmit} className="container" style={{ height: window.innerHeight }}>
+      <form
+        onSubmit={handleSubmit}
+        className="container"
+        style={{ height: window.innerHeight }}
+      >
         <div
           className="d-flex flex-column justify-content-center align-items-center"
           style={{ height: window.innerHeight }}
@@ -44,7 +53,7 @@ function SignUpPage(props) {
                 prefix={<UserOutlined />}
               />
             </div>
-            <div className="text-danger">{errors.name}</div>
+            <div className="text-danger text-left">{errors.name}</div>
             <div className="d-flex mt-3">
               <Input
                 type="number"
@@ -56,7 +65,7 @@ function SignUpPage(props) {
                 prefix={<PhoneOutlined />}
               />
             </div>
-            <div className="text-danger">{errors.phoneNumber}</div>
+            <div className="text-danger text-left">{errors.phoneNumber}</div>
             <div className="d-flex mt-3">
               <Input
                 onChange={handleChange}
@@ -67,7 +76,7 @@ function SignUpPage(props) {
                 prefix={<MailOutlined />}
               />
             </div>
-            <div className="text-danger">{errors.email}</div>
+            <div className="text-danger text-left">{errors.email}</div>
             <div className="d-flex mt-3">
               <Input
                 onChange={handleChange}
@@ -79,7 +88,7 @@ function SignUpPage(props) {
                 prefix={<LockOutlined />}
               />
             </div>
-            <div className="text-danger">{errors.passWord}</div>
+            <div className="text-danger text-left">{errors.passWord}</div>
             <Button
               htmlType="submit"
               size="large"

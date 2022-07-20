@@ -7,9 +7,9 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { SIGNIN_ACTION } from "../../redux/actions/JiraActions";
 import { NavLink } from "react-router-dom";
 import Background from "../../assets/img/jiraBackground.jpg";
+
 function LoginUI(props) {
-  const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
-    props;
+  const { values, touched, errors, handleChange, handleBlur, handleSubmit } = props;
   const backgroundJira = {
     backgroundImage: `url(${Background})`,
     backgroundRepeat: "no-repeat",
@@ -50,7 +50,7 @@ function LoginUI(props) {
               />
             </div>
 
-            <div className="text-red-500">{errors.email}</div>
+            <div className="text-red-500 text-left">{errors.email}</div>
 
             <div className="flex mt-3">
               <Input
@@ -64,7 +64,7 @@ function LoginUI(props) {
                 prefix={<LockOutlined />}
               />
             </div>
-            <div className="text-red-500">{errors.password}</div>
+            <div className="text-red-500 text-left">{errors.password}</div>
             <Button
               htmlType="submit"
               type="primary"

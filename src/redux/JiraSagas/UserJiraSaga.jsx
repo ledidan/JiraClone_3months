@@ -1,4 +1,4 @@
-import { call, delay, put, takeLatest } from "redux-saga/effects";
+import { call, delay, fork, put, takeLatest } from "redux-saga/effects";
 import { history } from "../../util/history";
 import { Notification } from "../../util/Notification/notification";
 import { userService } from "../services/UserService";
@@ -20,6 +20,7 @@ import {
   USER_SIGNIN_API,
   USER_SIGNUP_API,
 } from "../contants/UserConstants";
+import { take } from "lodash";
 
 // LOGIN API
 function* signInJira(action) {
@@ -32,6 +33,7 @@ function* signInJira(action) {
     // save data in localstorage when signin successfully
     localStorage.setItem(ACCESS_TOKEN, data.content.accessToken);
     localStorage.setItem(USER_LOGIN, JSON.stringify(data.content));
+
     if (status === STATUS_CODE.SUCCESS) {
       yield put({
         type: USLOGIN_ACTION,
@@ -53,6 +55,13 @@ export function* listenUserSignIn() {
   yield takeLatest(USER_SIGNIN_API, signInJira);
 }
 
+// Logged Out User
+// function* loggedOutUser() {
+//   while (true) {
+//     yield fork(signInJira, USER_SIGNIN_API);
+//   }
+// }
+
 // Sign Up User
 function* signUpSaga(action) {
   yield put({
@@ -61,12 +70,11 @@ function* signUpSaga(action) {
   // Gọi api
   try {
     const { data, status } = yield call(() => userService.signup(action.userSignUp));
-    if (status === STATUS_CODE.SUCCESS) {
+    if (data.statusCode === STATUS_CODE.SUCCESS) {
       Notification("success", "Signup Successfully");
       history.push("/login");
     }
     console.log(data);
-    // load lại list user
     yield put({
       type: GET_USER_API,
       keyWord: "",

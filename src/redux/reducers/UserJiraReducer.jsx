@@ -11,11 +11,11 @@ if (localStorage.getItem(USER_LOGIN)) {
 }
 const stateDefault = {
   userLogin: UsLogin,
-  userSignup: [],
   userSearch: [],
   arrUser: [],
   userSignup: null,
   loading: false,
+  userLoggedOut: [],
   error: "",
 };
 
@@ -27,6 +27,9 @@ export const UserLoginJiraReducer = (state = stateDefault, action) => {
     }
     case USER_SIGNUP_REDUCER: {
       return { ...state, userSignup: action.userSignup };
+    }
+    case "USER_LOGGED_OUT": {
+      return { ...state, userLoggedOut: action.userLoggedOut };
     }
     case GET_SEARCH_USER: {
       state.userSearch = action.lstUserSearch;
